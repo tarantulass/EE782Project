@@ -1,0 +1,70 @@
+MAE per predicted parameter (normalized):
+2025-11-26 16:01:38,163 - utils.logmodule - INFO -   PatchLength: 0.093484
+2025-11-26 16:01:38,163 - utils.logmodule - INFO -   PatchWidth: 0.093779
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Striplinewidth: 0.093547
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Notchlength: 0.093918
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Notchwidth: 0.094081
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Gndlength: 0.094186
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Gndwidth: 0.093540
+2025-11-26 16:01:38,164 - utils.logmodule - INFO - Real-world MAE (original units)
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   PatchLength: 0.010909
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   PatchWidth: 0.010944
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Striplinewidth: 0.000624
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Notchlength: 0.001461
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Notchwidth: 0.001098
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Gndlength: 0.021983
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Gndwidth: 0.021832
+2025-11-26 16:01:38,164 - utils.logmodule - INFO - === MAPE (%) ===
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   PatchLength: 66.62%
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   PatchWidth: 66.82%
+2025-11-26 16:01:38,164 - utils.logmodule - INFO -   Striplinewidth: 66.66%
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -   Notchlength: 66.92%
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -   Notchwidth: 67.05%
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -   Gndlength: 67.11%
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -   Gndwidth: 66.65%
+2025-11-26 16:01:38,165 - utils.logmodule - INFO - === Sample Predictions (first 3 test cases) ===
+2025-11-26 16:01:38,165 - utils.logmodule - INFO - 
+Test Case 1:
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -   Freq_Hz (given): 3.40e+09
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -   EpsilonR (given): 4.80
+2025-11-26 16:01:38,165 - utils.logmodule - INFO - 
+  Predicted vs Actual:
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -     PatchLength: 0.028702 vs 0.020122 (error: 42.64%)
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -     PatchWidth: 0.029484 vs 0.020122 (error: 46.52%)
+2025-11-26 16:01:38,165 - utils.logmodule - INFO -     Striplinewidth: 0.001686 vs 0.001150 (error: 46.67%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Notchlength: 0.003802 vs 0.002683 (error: 41.71%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Notchwidth: 0.002853 vs 0.002012 (error: 41.80%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Gndlength: 0.057484 vs 0.040244 (error: 42.84%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Gndwidth: 0.060227 vs 0.040244 (error: 49.65%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO - 
+Test Case 2:
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -   Freq_Hz (given): 3.40e+09
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -   EpsilonR (given): 4.80
+2025-11-26 16:01:38,166 - utils.logmodule - INFO - 
+  Predicted vs Actual:
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     PatchLength: 0.031541 vs 0.020121 (error: 56.75%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     PatchWidth: 0.030123 vs 0.020121 (error: 49.71%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Striplinewidth: 0.001817 vs 0.001150 (error: 58.04%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Notchlength: 0.004294 vs 0.002683 (error: 60.05%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Notchwidth: 0.003155 vs 0.002012 (error: 56.82%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Gndlength: 0.064927 vs 0.040242 (error: 61.34%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -     Gndwidth: 0.061885 vs 0.040242 (error: 53.78%)
+2025-11-26 16:01:38,166 - utils.logmodule - INFO - 
+Test Case 3:
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -   Freq_Hz (given): 3.40e+09
+2025-11-26 16:01:38,166 - utils.logmodule - INFO -   EpsilonR (given): 4.80
+2025-11-26 16:01:38,166 - utils.logmodule - INFO - 
+  Predicted vs Actual:
+2025-11-26 16:01:38,167 - utils.logmodule - INFO -     PatchLength: 0.007033 vs 0.020120 (error: 65.04%)
+2025-11-26 16:01:38,167 - utils.logmodule - INFO -     PatchWidth: 0.007556 vs 0.020120 (error: 62.44%)
+2025-11-26 16:01:38,167 - utils.logmodule - INFO -     Striplinewidth: 0.000333 vs 0.001150 (error: 71.07%)
+2025-11-26 16:01:38,167 - utils.logmodule - INFO -     Notchlength: 0.001068 vs 0.002683 (error: 60.19%)
+2025-11-26 16:01:38,167 - utils.logmodule - INFO -     Notchwidth: 0.000788 vs 0.002012 (error: 60.82%)
+2025-11-26 16:01:38,167 - utils.logmodule - INFO -     Gndlength: 0.010398 vs 0.040240 (error: 74.16%)
+2025-11-26 16:01:38,167 - utils.logmodule - INFO -     Gndwidth: 0.017329 vs 0.040240 (error: 56.94%)
+2025-11-26 16:01:38,203 - utils.logmodule - INFO - 
+=== Accessing Results ===
+2025-11-26 16:01:38,207 - utils.logmodule - INFO - MAE Real: [0.01090942 0.0109438  0.00062381 0.00146134 0.00109791 0.02198267
+ 0.02183186]
+2025-11-26 16:01:38,208 - utils.logmodule - INFO - MAPE: [66.61807597 66.8207416  66.66198673 66.91866338 67.04668497 67.10541319
+ 66.64803573]

@@ -9,7 +9,6 @@ import numpy as np
 import torch
 import torch.nn as nn
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
 from typing import List, Tuple, Dict, Optional
 import os,sys
 from pathlib import Path
@@ -31,7 +30,7 @@ class GaussianRBM():
         v_dotW = torch.mm(v, self.W.T)
         activation = v_dotW + self.h_bias.expand_as(v_dotW)
         prob_h = torch.sigmoid(activation)
-        return prob_h, torch.bernoulli(prob_h)
+        return prob_h ,torch.bernoulli(prob_h)
     
     def sample_visible(self, h):
         """Sample visible nodes given hidden nodes (Gaussian for continuous)"""
@@ -308,8 +307,8 @@ if __name__ == "__main__":
 
     rbm_model, test_results = run_antenna_inverse_design(
         csv_path=data_path,
-        hidden_nodes=50,
-        epochs=100,
+        hidden_nodes=70,
+        epochs=900,
         batch_size=32,
         train_split=0.8,
         logger=logger

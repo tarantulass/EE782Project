@@ -21,6 +21,16 @@
 4. Autoencoders
 5. Variational autoencoders
 6. Restricted Boltzmann Machines
+---------------------------------------------------------------------------------------------------------------------------------------------------
+The transition from 50 to 100 hidden nodes causes the RuntimeError due to a numerical instability issue amplified by the larger network.
+
+    With 100 hidden nodes (W is 100×11), the computed activation v_dotW is larger in magnitude, potentially leading to floating-point overflow when fed into torch.sigmoid.
+
+    If the sigmoid input is too large (positive or negative), the output prob_h can become extremely close to 1.0 or 0.0, but a tiny precision error (e.g., 1.0+ϵ) can make it numerically slightly outside the [0,1] range.
+
+    The function torch.bernoulli() strictly requires its input to be in [0,1], hence the failure.
+    Fix: Reduce the learning rate or the initial weight scale (currently * 0.01 in GaussianRBM.__init__) to manage the scale of activations or reduce it to 70.
+---------------------------------------------------------------------------------------------------------------------------------------------------
 7. Transformers
 
 ### Miscellaneous

@@ -18,9 +18,8 @@
 3. CatBoost - initially developed for gradient boosting on decision trees with categorical features support - skipped as dataset has no significant change in  categorical features, some changes could be introducing different feeds like apperture, using slot antennas,etc... 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 #### Neural Networks - model complex relationships between inputs and outputs and predict multiple target variables (desired)
-4. Autoencoders
-5. Variational autoencoders
-6. Restricted Boltzmann Machines
+4. Variational autoencoders
+5. Restricted Boltzmann Machines
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 The transition from 50 to 100 hidden nodes causes the RuntimeError due to a numerical instability issue amplified by the larger network.
 
@@ -31,7 +30,6 @@ The transition from 50 to 100 hidden nodes causes the RuntimeError due to a nume
     The function torch.bernoulli() strictly requires its input to be in [0,1], hence the failure.
     Fix: Reduce the learning rate or the initial weight scale (currently * 0.01 in GaussianRBM.__init__) to manage the scale of activations or reduce it to 70.
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-7. Transformers
 
 ### Miscellaneous
 1. Genetic Algorithms for patch antenna miniaturization - Antenna miniaturization techniques - optimizing material used but also comes with a caveat (manufacturing becomes difficult).

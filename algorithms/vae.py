@@ -43,9 +43,7 @@ class QADataset(Dataset):
         a_ids, a_mask = encode_text(self.answers[idx])
         return q_ids, q_mask, a_ids, a_mask
 
-# ---------------------------
-# Model (Conditional VAE)
-# ---------------------------
+
 class Encoder(nn.Module):
     def __init__(self):
         super().__init__()

@@ -16,7 +16,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ### local imports
 from utils.logmodule import logsetup
 
-logger = logsetup()
+logger = logsetup("results/boltzmann/boltzmann.log")
 
 # Gaussian RBM for continuous values (regression)
 class GaussianRBM():
@@ -268,17 +268,24 @@ def run_antenna_inverse_design(csv_path: str,
         results: Dictionary containing test results and metrics
     """
 
-    # Feature columns
+    # # Feature columns for insetfed
+    # feature_cols = ['Freq_Hz', 'PatchLength', 'PatchWidth', 'PatchHeight', 
+    #                 'Striplinewidth', 'FeedOffset', 'Notchlength', 'Notchwidth',
+    #                 'Gndlength', 'Gndwidth', 'EpsilonR']
+    # known_indices = [0, 3, 5, 10]
+    # unknown_indices = [1, 2, 4, 6, 7, 8, 9]
+
+    # Feature columns for coaxialfed
     feature_cols = ['Freq_Hz', 'PatchLength', 'PatchWidth', 'PatchHeight', 
-                    'Striplinewidth', 'FeedOffset', 'Notchlength', 'Notchwidth',
-                    'Gndlength', 'Gndwidth', 'EpsilonR']
-    
+                    'FeedPosX', 'FeedPosY', 'EpsilonR']
+    known_indices = [0, 3, 6]
+    unknown_indices = [1, 2, 4, 5]
+
     # Known and unknown parameter indices
     # Known: Freq_Hz (0), PatchHeight (3), FeedOffset (5), EpsilonR (10)
     # Unknown: PatchLength (1), PatchWidth (2), Striplinewidth (4), 
     #          Notchlength (6), Notchwidth (7), Gndlength (8), Gndwidth (9)
-    known_indices = [0, 3, 5, 10]
-    unknown_indices = [1, 2, 4, 6, 7, 8, 9]
+ 
     
     # Load and preprocess data
     training_set, testing_set, scaler = load_and_preprocess_data(
@@ -302,13 +309,13 @@ def run_antenna_inverse_design(csv_path: str,
 
 # Example usage
 if __name__ == "__main__":
-    data_path = Path("datasets/Patch_data_insetfed.csv")  
+    data_path = Path("datasets/patch_data_coaxial.csv")  
     logger.info("\n Running Antenna Inverse Design with RBM ")
 
     rbm_model, test_results = run_antenna_inverse_design(
         csv_path=data_path,
         hidden_nodes=70,
-        epochs=900,
+        epochs=600,
         batch_size=32,
         train_split=0.8,
         logger=logger

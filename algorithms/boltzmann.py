@@ -1,8 +1,9 @@
 """
 Restricted Boltzmann Machine for Patch Antenna Inverse Design (Regression)
-This RBM predicts missing antenna parameters given frequency and some known parameters.
+THE FOLLOWING TAKES INTO ACCOUNT THE USUAL DESIGNER PRACTICES WHERE CERTAIN PARAMETERS ARE KNOWN AND OTHERS ARE OBTAINED BY FEM USING HFSS EM simulations
 """
 
+from camelot import logger
 import pandas as pd
 import numpy as np
 import torch
@@ -10,6 +11,11 @@ import torch.nn as nn
 import torch.optim as optim
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+
+
+### local imports
+from utils.logmodule import logsetup
+
 
 # Load your patch antenna dataset
 # Replace with your actual CSV file path
@@ -71,11 +77,11 @@ hidden = 50  # Hidden units to capture patterns
 batch_size = 32
 rbm = GaussianRBM(visible, hidden)
 
-print(f"\nRBM Architecture: {visible} visible nodes, {hidden} hidden nodes")
+logger.info(f"\nRBM Architecture: {visible} visible nodes, {hidden} hidden nodes")
 
 # Training the RBM
 epochs = 100
-print("\n=== Training RBM ===")
+logger.info("\n=== Training RBM ===")
 
 for epoch in range(1, epochs + 1):
     training_loss = 0
@@ -97,9 +103,9 @@ for epoch in range(1, epochs + 1):
         s += 1
     
     if epoch % 10 == 0:
-        print(f'Epoch {epoch}/{epochs} - Training Loss: {training_loss/s:.6f}')
+        logger.info(f'Epoch {epoch}/{epochs} - Training Loss: {training_loss/s:.6f}')
 
-print("\n=== Testing RBM with Missing Parameters ===")
+logger.info("\n=== Testing RBM with Missing Parameters ===")
 
 # For testing: mask out parameters to predict
 # Known: Freq_Hz (0), PatchHeight (3), FeedOffset (5), EpsilonR (10)
@@ -143,12 +149,12 @@ for id in range(len(testing_set)):
 avg_testing_loss = testing_loss / len(testing_set)
 mae_per_feature /= len(testing_set)
 
-print(f'\nOverall MAE (normalized): {avg_testing_loss:.6f}')
-print('\nMAE per predicted parameter (normalized):')
+logger.info(f'\nOverall MAE (normalized): {avg_testing_loss:.6f}')
+logger.info('\nMAE per predicted parameter (normalized):')
 param_names = ['PatchLength', 'PatchWidth', 'Striplinewidth', 
                'Notchlength', 'Notchwidth', 'Gndlength', 'Gndwidth']
 for i, name in enumerate(param_names):
-    print(f'  {name}: {mae_per_feature[i]:.6f}')
+    logger.info(f'  {name}: {mae_per_feature[i]:.6f}')
 
 # Denormalize predictions to original scale
 predictions_denorm = scaler.inverse_transform(predictions_list)
@@ -158,28 +164,28 @@ actuals_denorm = scaler.inverse_transform(actuals_list)
 mae_real = np.mean(np.abs(predictions_denorm[:, unknown_indices] - 
                           actuals_denorm[:, unknown_indices]), axis=0)
 
-print('\n=== Real-world MAE (original units) ===')
+logger.info('\n=== Real-world MAE (original units) ===')
 for i, name in enumerate(param_names):
-    print(f'  {name}: {mae_real[i]:.6f}')
+    logger.info(f'  {name}: {mae_real[i]:.6f}')
 
 # Calculate MAPE (Mean Absolute Percentage Error)
 mape = np.mean(np.abs((predictions_denorm[:, unknown_indices] - 
                        actuals_denorm[:, unknown_indices]) / 
                       (actuals_denorm[:, unknown_indices] + 1e-10)) * 100, axis=0)
 
-print('\n=== MAPE (%) ===')
+logger.info('\n=== MAPE (%) ===')
 for i, name in enumerate(param_names):
-    print(f'  {name}: {mape[i]:.2f}%')
+    logger.info(f'  {name}: {mape[i]:.2f}%')
 
 # Show sample predictions
-print('\n=== Sample Predictions (first 3 test cases) ===')
+logger.info('\n=== Sample Predictions (first 3 test cases) ===')
 for i in range(min(3, len(testing_set))):
-    print(f'\nTest Case {i+1}:')
-    print(f"  Freq_Hz (given): {actuals_denorm[i, 0]:.2e}")
-    print(f"  EpsilonR (given): {actuals_denorm[i, 10]:.2f}")
-    print('\n  Predicted vs Actual:')
+    logger.info(f'\nTest Case {i+1}:')
+    logger.info(f"  Freq_Hz (given): {actuals_denorm[i, 0]:.2e}")
+    logger.info(f"  EpsilonR (given): {actuals_denorm[i, 10]:.2f}")
+    logger.info('\n  Predicted vs Actual:')
     for j, idx in enumerate(unknown_indices):
         pred_val = predictions_denorm[i, idx]
         actual_val = actuals_denorm[i, idx]
         error_pct = abs(pred_val - actual_val) / (actual_val + 1e-10) * 100
-        print(f'    {feature_cols[idx]}: {pred_val:.6f} vs {actual_val:.6f} (error: {error_pct:.2f}%)')
+        logger.info(f'    {feature_cols[idx]}: {pred_val:.6f} vs {actual_val:.6f} (error: {error_pct:.2f}%)')

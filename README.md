@@ -14,7 +14,7 @@
 #### Ensemble Methods - predict a target variable based on multiple input features
 1. Adaboost
 2. Random Forest
-3. CatBoost
+3. CatBoost - initially developed for gradient boosting on decision trees with categorical features support - skipped as dataset has no significant change in  categorical features, some changes could be introducing different feeds like apperture, using slot antennas,etc...
 ---------------------------------------------------------------------------------------------------------------------------------------------
 #### Neural Networks - model complex relationships between inputs and outputs and predict multiple target variables (desired)
 4. Autoencoders

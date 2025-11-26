@@ -1,0 +1,12 @@
+AdaBoost Feature Importances
+============================
+FeedOffset: 0.6153129649595969
+Notchlength: 0.20218195559779475
+Striplinewidth: 0.081248079771231
+PatchHeight: 0.04797960594907378
+PatchLength: 0.012309692495078222
+PatchWidth: 0.011819749273301603
+Gndlength: 0.010115123210284174
+Gndwidth: 0.009700229904727225
+Notchwidth: 0.009332598838912324
+EpsilonR: 0.0

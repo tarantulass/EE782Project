@@ -1,5 +1,5 @@
 ### Dataset generation for Antenna Design Optimization using Ansys
-1. Download Ansys Electronics Desktop (AEDT) student version (above 2022) and set up the environment for scripting.
+1. Download Ansys Electronics Desktop (AEDT) student version (above 2022) and set up the environment for scripting by opening HFSS in home page ribbon.
 2. Setup the pyaedt console by HFSS->simulation->pyaedt console.
 3. Use the provided scripts in the `automation` folder to generate datasets for different antenna
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -25,4 +25,10 @@
 ### Miscellaneous
 1. Genetic Algorithms for patch antenna miniaturization - Antenna miniaturization techniques - optimizing material used but also comes with a caveat (manufacturing becomes difficult).
 2. RAG chatbot for antenna design queries.
+------------------------------------------------------------------------------------------------------------------------------------------------
 
+### The requirements.txt file contains all the necessary libraries to run the code (generated using pip freeze hence many stray libraries may also get installed). Please install them using pip.
+
+```bash
+pip install -r requirements.txt
+```

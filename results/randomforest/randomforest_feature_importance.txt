@@ -1,0 +1,12 @@
+Random Forest Feature Importances
+============================
+FeedOffset: 0.5880874929763248
+Notchwidth: 0.12585018446234184
+Gndwidth: 0.0927900857984962
+PatchLength: 0.05521509480858816
+PatchHeight: 0.050800263197085554
+Gndlength: 0.0488522185497489
+Striplinewidth: 0.017255201568811964
+Notchlength: 0.01429450020483741
+PatchWidth: 0.0068549584337652646
+EpsilonR: 0.0

@@ -218,16 +218,16 @@ def test_rbm(rbm: GaussianRBM,
     for i, name in enumerate(param_names):
         logger.info(f'  {name}: {mae_real[i]:.6f}')
 
-    logger.info('=== MAPE (%) ===')
+    logger.info(' MAPE (%) ')
     for i, name in enumerate(param_names):
         logger.info(f'  {name}: {mape[i]:.2f}%')
 
     # Show sample predictions
-    logger.info('=== Sample Predictions (first 3 test cases) ===')
+    logger.info(' Sample Predictions (first 3 test cases) ')
     for i in range(min(3, len(testing_set))):
         logger.info(f'\nTest Case {i+1}:')
         logger.info(f"  Freq_Hz (given): {actuals_denorm[i, 0]:.2e}")
-        logger.info(f"  EpsilonR (given): {actuals_denorm[i, 10]:.2f}")
+        logger.info(f"  EpsilonR (given): {actuals_denorm[i, len(feature_cols)-1]:.2f}")
         logger.info('\n  Predicted vs Actual:')
         for j, idx in enumerate(unknown_indices):
             pred_val = predictions_denorm[i, idx]

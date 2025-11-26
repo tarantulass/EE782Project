@@ -101,9 +101,6 @@ class CVAE(nn.Module):
         logits = self.dec(z, a_ids)
         return logits, mu, logvar
 
-# ---------------------------
-# Training
-# ---------------------------
 def loss_fn(logits, target, mu, logvar):
     recon = nn.CrossEntropyLoss(ignore_index=tokenizer.pad_token_id)(logits.view(-1, logits.size(-1)), target.view(-1))
     kl = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
@@ -133,9 +130,6 @@ def train(csv_path):
     return model
 
 
-# ---------------------------
-# Generate Answer (Inference)
-# ---------------------------
 @torch.no_grad()
 def generate_answer(model, question_text, max_len=80):
     q_ids, q_mask = encode_text(question_text)
@@ -164,7 +158,7 @@ def generate_answer(model, question_text, max_len=80):
 
 
 if __name__ == "__main__":
-    model = train("datasets/QA_dataset.csv")
-    question = "What is the reason of using stubs ?"
+    model = train("datasets/Generative.csv")
+    question = "What is the reason of using stubs how is it helpful?"
     answer = generate_answer(model, question)
     print(f"Q: {question}\nA: {answer}")

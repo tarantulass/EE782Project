@@ -126,3 +126,126 @@ MAE per predicted parameter (normalized):
 2025-11-26 17:15:55,190 - utils.logmodule - INFO - 
 Test Case 1:
 2025-11-26 17:15:55,191 - utils.logmodule - INFO -   Freq_Hz (given): 3.40e+09
+2025-11-26 17:23:20,600 - utils.logmodule - INFO - 
+ Running Antenna Inverse Design with RBM 
+2025-11-26 17:23:20,760 - utils.logmodule - INFO - Training samples: 31999
+2025-11-26 17:23:20,760 - utils.logmodule - INFO - Testing samples: 8000
+2025-11-26 17:23:20,773 - utils.logmodule - INFO - 
+RBM Architecture: 7 visible nodes, 70 hidden nodes
+2025-11-26 17:23:20,773 - utils.logmodule - INFO - 
+=== Training RBM ===
+2025-11-26 17:23:43,645 - utils.logmodule - INFO - Epoch 10/600 - Training Loss: 0.110351
+2025-11-26 17:24:07,302 - utils.logmodule - INFO - Epoch 20/600 - Training Loss: 0.120006
+2025-11-26 17:24:31,140 - utils.logmodule - INFO - Epoch 30/600 - Training Loss: 0.127163
+2025-11-26 17:24:54,644 - utils.logmodule - INFO - Epoch 40/600 - Training Loss: 0.127913
+2025-11-26 17:25:17,284 - utils.logmodule - INFO - Epoch 50/600 - Training Loss: 0.125290
+2025-11-26 17:25:40,254 - utils.logmodule - INFO - Epoch 60/600 - Training Loss: 0.124044
+2025-11-26 17:26:05,237 - utils.logmodule - INFO - Epoch 70/600 - Training Loss: 0.121892
+2025-11-26 17:26:28,467 - utils.logmodule - INFO - Epoch 80/600 - Training Loss: 0.121267
+2025-11-26 17:26:52,347 - utils.logmodule - INFO - Epoch 90/600 - Training Loss: 0.121106
+2025-11-26 17:27:16,441 - utils.logmodule - INFO - Epoch 100/600 - Training Loss: 0.120367
+2025-11-26 17:27:41,895 - utils.logmodule - INFO - Epoch 110/600 - Training Loss: 0.118988
+2025-11-26 17:28:08,715 - utils.logmodule - INFO - Epoch 120/600 - Training Loss: 0.119893
+2025-11-26 17:28:35,570 - utils.logmodule - INFO - Epoch 130/600 - Training Loss: 0.119582
+2025-11-26 17:28:56,327 - utils.logmodule - INFO - Epoch 140/600 - Training Loss: 0.120354
+2025-11-26 17:29:15,790 - utils.logmodule - INFO - Epoch 150/600 - Training Loss: 0.120040
+2025-11-26 17:29:35,514 - utils.logmodule - INFO - Epoch 160/600 - Training Loss: 0.120075
+2025-11-26 17:29:54,998 - utils.logmodule - INFO - Epoch 170/600 - Training Loss: 0.119539
+2025-11-26 17:30:14,573 - utils.logmodule - INFO - Epoch 180/600 - Training Loss: 0.120216
+2025-11-26 17:30:34,580 - utils.logmodule - INFO - Epoch 190/600 - Training Loss: 0.118990
+2025-11-26 17:30:54,156 - utils.logmodule - INFO - Epoch 200/600 - Training Loss: 0.118776
+2025-11-26 17:31:13,916 - utils.logmodule - INFO - Epoch 210/600 - Training Loss: 0.119137
+2025-11-26 17:31:33,379 - utils.logmodule - INFO - Epoch 220/600 - Training Loss: 0.117805
+2025-11-26 17:31:52,940 - utils.logmodule - INFO - Epoch 230/600 - Training Loss: 0.118456
+2025-11-26 17:32:12,791 - utils.logmodule - INFO - Epoch 240/600 - Training Loss: 0.118046
+2025-11-26 17:32:32,438 - utils.logmodule - INFO - Epoch 250/600 - Training Loss: 0.119952
+2025-11-26 17:32:51,913 - utils.logmodule - INFO - Epoch 260/600 - Training Loss: 0.118557
+2025-11-26 17:33:11,523 - utils.logmodule - INFO - Epoch 270/600 - Training Loss: 0.120227
+2025-11-26 17:33:31,962 - utils.logmodule - INFO - Epoch 280/600 - Training Loss: 0.118528
+2025-11-26 17:33:51,861 - utils.logmodule - INFO - Epoch 290/600 - Training Loss: 0.118158
+2025-11-26 17:34:11,496 - utils.logmodule - INFO - Epoch 300/600 - Training Loss: 0.118293
+2025-11-26 17:34:31,224 - utils.logmodule - INFO - Epoch 310/600 - Training Loss: 0.120051
+2025-11-26 17:34:50,794 - utils.logmodule - INFO - Epoch 320/600 - Training Loss: 0.118722
+2025-11-26 17:35:10,509 - utils.logmodule - INFO - Epoch 330/600 - Training Loss: 0.119026
+2025-11-26 17:35:29,918 - utils.logmodule - INFO - Epoch 340/600 - Training Loss: 0.118358
+2025-11-26 17:35:49,414 - utils.logmodule - INFO - Epoch 350/600 - Training Loss: 0.118884
+2025-11-26 17:36:08,856 - utils.logmodule - INFO - Epoch 360/600 - Training Loss: 0.118697
+2025-11-26 17:36:28,352 - utils.logmodule - INFO - Epoch 370/600 - Training Loss: 0.119794
+2025-11-26 17:36:48,001 - utils.logmodule - INFO - Epoch 380/600 - Training Loss: 0.119668
+2025-11-26 17:37:07,528 - utils.logmodule - INFO - Epoch 390/600 - Training Loss: 0.120788
+2025-11-26 17:37:26,976 - utils.logmodule - INFO - Epoch 400/600 - Training Loss: 0.119062
+2025-11-26 17:37:46,529 - utils.logmodule - INFO - Epoch 410/600 - Training Loss: 0.119814
+2025-11-26 17:38:06,033 - utils.logmodule - INFO - Epoch 420/600 - Training Loss: 0.119861
+2025-11-26 17:38:25,608 - utils.logmodule - INFO - Epoch 430/600 - Training Loss: 0.121051
+2025-11-26 17:38:45,113 - utils.logmodule - INFO - Epoch 440/600 - Training Loss: 0.120359
+2025-11-26 17:39:04,472 - utils.logmodule - INFO - Epoch 450/600 - Training Loss: 0.122095
+2025-11-26 17:39:23,942 - utils.logmodule - INFO - Epoch 460/600 - Training Loss: 0.121789
+2025-11-26 17:39:43,450 - utils.logmodule - INFO - Epoch 470/600 - Training Loss: 0.121181
+2025-11-26 17:40:02,896 - utils.logmodule - INFO - Epoch 480/600 - Training Loss: 0.122262
+2025-11-26 17:40:22,344 - utils.logmodule - INFO - Epoch 490/600 - Training Loss: 0.123711
+2025-11-26 17:40:41,829 - utils.logmodule - INFO - Epoch 500/600 - Training Loss: 0.123788
+2025-11-26 17:41:01,337 - utils.logmodule - INFO - Epoch 510/600 - Training Loss: 0.123137
+2025-11-26 17:41:20,734 - utils.logmodule - INFO - Epoch 520/600 - Training Loss: 0.123945
+2025-11-26 17:41:40,194 - utils.logmodule - INFO - Epoch 530/600 - Training Loss: 0.125707
+2025-11-26 17:41:59,661 - utils.logmodule - INFO - Epoch 540/600 - Training Loss: 0.124641
+2025-11-26 17:42:19,092 - utils.logmodule - INFO - Epoch 550/600 - Training Loss: 0.126050
+2025-11-26 17:42:38,606 - utils.logmodule - INFO - Epoch 560/600 - Training Loss: 0.128112
+2025-11-26 17:42:58,260 - utils.logmodule - INFO - Epoch 570/600 - Training Loss: 0.129542
+2025-11-26 17:43:17,759 - utils.logmodule - INFO - Epoch 580/600 - Training Loss: 0.127006
+2025-11-26 17:43:40,061 - utils.logmodule - INFO - Epoch 590/600 - Training Loss: 0.125248
+2025-11-26 17:44:02,825 - utils.logmodule - INFO - Epoch 600/600 - Training Loss: 0.125660
+2025-11-26 17:44:02,826 - utils.logmodule - INFO - 
+=== Testing RBM with Missing Parameters ===
+2025-11-26 17:44:34,522 - utils.logmodule - INFO - 
+Overall MAE (normalized): 0.134158
+2025-11-26 17:44:34,524 - utils.logmodule - INFO - 
+MAE per predicted parameter (normalized):
+2025-11-26 17:44:34,524 - utils.logmodule - INFO -   PatchLength: 0.176244
+2025-11-26 17:44:34,524 - utils.logmodule - INFO -   PatchWidth: 0.176273
+2025-11-26 17:44:34,524 - utils.logmodule - INFO -   FeedPosX: 0.176221
+2025-11-26 17:44:34,525 - utils.logmodule - INFO -   FeedPosY: 0.007891
+2025-11-26 17:44:34,525 - utils.logmodule - INFO - Real-world MAE (original units)
+2025-11-26 17:44:34,525 - utils.logmodule - INFO -   PatchLength: 0.019950
+2025-11-26 17:44:34,525 - utils.logmodule - INFO -   PatchWidth: 0.025713
+2025-11-26 17:44:34,525 - utils.logmodule - INFO -   FeedPosX: 0.004200
+2025-11-26 17:44:34,525 - utils.logmodule - INFO -   FeedPosY: 0.007891
+2025-11-26 17:44:34,526 - utils.logmodule - INFO - === MAPE (%) ===
+2025-11-26 17:44:34,526 - utils.logmodule - INFO -   PatchLength: 126.30%
+2025-11-26 17:44:34,526 - utils.logmodule - INFO -   PatchWidth: 126.31%
+2025-11-26 17:44:34,526 - utils.logmodule - INFO -   FeedPosX: 126.30%
+2025-11-26 17:44:34,526 - utils.logmodule - INFO -   FeedPosY: 7891018892.14%
+2025-11-26 17:44:34,526 - utils.logmodule - INFO - === Sample Predictions (first 3 test cases) ===
+2025-11-26 17:44:34,527 - utils.logmodule - INFO - 
+Test Case 1:
+2025-11-26 17:44:34,528 - utils.logmodule - INFO -   Freq_Hz (given): 3.40e+09
+2025-11-26 17:44:34,528 - utils.logmodule - INFO -   EpsilonR (given): 4.80
+2025-11-26 17:44:34,528 - utils.logmodule - INFO - 
+  Predicted vs Actual:
+2025-11-26 17:44:34,528 - utils.logmodule - INFO -     PatchLength: 0.048301 vs 0.019519 (error: 147.46%)
+2025-11-26 17:44:34,528 - utils.logmodule - INFO -     PatchWidth: 0.058366 vs 0.025153 (error: 132.05%)
+2025-11-26 17:44:34,529 - utils.logmodule - INFO -     FeedPosX: 0.010256 vs 0.004109 (error: 149.58%)
+2025-11-26 17:44:34,529 - utils.logmodule - INFO -     FeedPosY: 0.005653 vs 0.000000 (error: 5653345491.74%)
+2025-11-26 17:44:34,529 - utils.logmodule - INFO - 
+Test Case 2:
+2025-11-26 17:44:34,530 - utils.logmodule - INFO -   Freq_Hz (given): 3.40e+09
+2025-11-26 17:44:34,530 - utils.logmodule - INFO -   EpsilonR (given): 4.80
+2025-11-26 17:44:34,530 - utils.logmodule - INFO - 
+  Predicted vs Actual:
+2025-11-26 17:44:34,530 - utils.logmodule - INFO -     PatchLength: 0.039531 vs 0.019517 (error: 102.54%)
+2025-11-26 17:44:34,531 - utils.logmodule - INFO -     PatchWidth: 0.051602 vs 0.025151 (error: 105.17%)
+2025-11-26 17:44:34,531 - utils.logmodule - INFO -     FeedPosX: 0.007780 vs 0.004109 (error: 89.33%)
+2025-11-26 17:44:34,531 - utils.logmodule - INFO -     FeedPosY: -0.016278 vs 0.000000 (error: 16277750954.03%)
+2025-11-26 17:44:34,531 - utils.logmodule - INFO - 
+Test Case 3:
+2025-11-26 17:44:34,531 - utils.logmodule - INFO -   Freq_Hz (given): 3.40e+09
+2025-11-26 17:44:34,532 - utils.logmodule - INFO -   EpsilonR (given): 4.80
+2025-11-26 17:44:34,532 - utils.logmodule - INFO - 
+  Predicted vs Actual:
+2025-11-26 17:44:34,532 - utils.logmodule - INFO -     PatchLength: 0.064858 vs 0.019516 (error: 232.33%)
+2025-11-26 17:44:34,532 - utils.logmodule - INFO -     PatchWidth: 0.080998 vs 0.025150 (error: 222.06%)
+2025-11-26 17:44:34,532 - utils.logmodule - INFO -     FeedPosX: 0.013185 vs 0.004109 (error: 220.90%)
+2025-11-26 17:44:34,532 - utils.logmodule - INFO -     FeedPosY: 0.001639 vs 0.000000 (error: 1638920162.80%)
+2025-11-26 17:44:34,567 - utils.logmodule - INFO - 
+=== Accessing Results ===
+2025-11-26 17:44:34,570 - utils.logmodule - INFO - MAE Real: [0.01995034 0.02571344 0.00419952 0.00789102]
+2025-11-26 17:44:34,570 - utils.logmodule - INFO - MAPE: [1.26303879e+02 1.26308286e+02 1.26297675e+02 7.89101889e+09]

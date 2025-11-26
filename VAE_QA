@@ -1,0 +1,8 @@
+2025-11-26 21:13:20,434 - utils.logmodule - INFO - Q: What is the reason of using stubs how is it helpful?
+A: 
+2025-11-26 21:13:20,693 - utils.logmodule - INFO - Model saved!
+2025-11-26 21:13:44,488 - utils.logmodule - INFO - Final BLEU-4 Score: 0.0000
+2025-11-26 22:35:01,667 - utils.logmodule - INFO - Q: What is the reason of using stubs how is it helpful?
+A: 
+2025-11-26 22:35:02,069 - utils.logmodule - INFO - Model saved!
+2025-11-26 22:35:18,326 - utils.logmodule - INFO - Final BLEU-4 Score: 0.0000

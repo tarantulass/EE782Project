@@ -1,0 +1,25 @@
+ANN Regressor (Surrogate Model) Metrics
+=========================================
+Model Structure: (200, 200), Max Iter: 1000
+
+Individual Output Metrics:
+  Gain:
+    RMSE: 12.4067
+    R² Score: 0.5413
+  Directivity:
+    RMSE: 36.7448
+    R² Score: 0.0587
+  S11(dB):
+    RMSE: 5.4889
+    R² Score: 0.1545
+  Rad_eff:
+    RMSE: 20218.0337
+    R² Score: -0.0273
+  Total_eff:
+    RMSE: 0.1848
+    R² Score: 0.5763
+  VSWR:
+    RMSE: 188.3502
+    R² Score: 0.3229
+
+Average RMSE: 3410.2015

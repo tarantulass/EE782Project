@@ -7,3 +7,4 @@ AUTOENCODER_DIR = os.path.join("results", "autoencoder")
 VAR_DIR = os.path.join("results", "variational_autoencoder")
 
 RAG_DIR = os.path.join("results", "rag")
+MLP_DIR = os.path.join("results", "mlp")

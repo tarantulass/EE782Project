@@ -7,6 +7,11 @@ from transformers import AutoTokenizer
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from nltk.translate.bleu_score import sentence_bleu, corpus_bleu, SmoothingFunction
+import nltk
+nltk.download('punkt')
+
+
 # local imports
 from pathlib import Path
 from utils.logmodule import logsetup
@@ -18,8 +23,8 @@ EMB_DIM = 256
 HID_DIM = 256
 MAX_LEN = 128
 BATCH = 16
-LR = 2e-4
-EPOCHS = 20
+LR = 5e-4
+EPOCHS = 6
 
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 
@@ -64,7 +69,6 @@ class Encoder(nn.Module):
         logvar = self.fc_logvar(h_n)
         return mu, logvar
 
-
 class Decoder(nn.Module):
     def __init__(self):
         super().__init__()
@@ -74,11 +78,22 @@ class Decoder(nn.Module):
         self.out = nn.Linear(HID_DIM, tokenizer.vocab_size)
 
     def forward(self, z, target_ids):
-        h0 = self.fc(z).unsqueeze(0)
-        h0 = h0.repeat(1, target_ids.size(0), 1)
-        emb = self.emb(target_ids)
-        out, _ = self.lstm(emb, (h0, torch.zeros_like(h0)))
-        logits = self.out(out)
+        # z shape: (batch_size, LATENT_DIM)
+        batch_size = z.size(0)
+        
+        # Initialize hidden state from latent z
+        h0 = self.fc(z)  # (batch_size, HID_DIM)
+        h0 = h0.unsqueeze(0)  # (1, batch_size, HID_DIM)
+        c0 = torch.zeros_like(h0)  # (1, batch_size, HID_DIM)
+        
+        # Embed target sequences
+        emb = self.emb(target_ids)  # (batch_size, seq_len, EMB_DIM)
+        
+        # Pass through LSTM
+        out, _ = self.lstm(emb, (h0, c0))  # out: (batch_size, seq_len, HID_DIM)
+        
+        # Project to vocabulary
+        logits = self.out(out)  # (batch_size, seq_len, vocab_size)
         return logits
 
 class CVAE(nn.Module):
@@ -118,56 +133,139 @@ def train(csv_path):
     opt = torch.optim.Adam(model.parameters(), lr=LR)
 
     for epoch in range(EPOCHS):
+        total_loss = 0
         for q_ids, q_mask, a_ids, a_mask in dl:
             q_ids = q_ids.to(DEVICE)
             a_ids = a_ids.to(DEVICE)
 
-            logits, mu, logvar = model(q_ids, a_ids)
+            # Use only question encoder during generation
+            mu_q, logvar_q = model.enc_q(q_ids)
+            
+            # For training, still use answer encoder
+            mu_a, logvar_a = model.enc_a(a_ids)
+            mu = (mu_q + mu_a) / 2
+            logvar = (logvar_q + logvar_a) / 2
+            
+            std = torch.exp(0.5 * logvar)
+            eps = torch.randn_like(std)
+            z = mu + eps * std
+
+            logits = model.dec(z, a_ids)
             loss = loss_fn(logits, a_ids, mu, logvar)
 
             opt.zero_grad()
             loss.backward()
             opt.step()
+            
+            total_loss += loss.item()
 
-        print(f"Epoch {epoch+1} | Loss {loss.item():.4f}")
+        print(f"Epoch {epoch+1} | Loss {total_loss/len(dl):.4f}")
 
     return model
-
-
 @torch.no_grad()
-def generate_answer(model, question_text, max_len=80):
+def generate_answer(model, question_text, max_len=50):
+    model.eval()
+    
     q_ids, q_mask = encode_text(question_text)
     q_ids = q_ids.unsqueeze(0).to(DEVICE)
 
-    # encode question
+    # Encode question
     mu_q, logvar_q = model.enc_q(q_ids)
-    std = torch.exp(0.5 * logvar_q)
-    z = mu_q + torch.randn_like(std) * std
+    z = mu_q
+    
+    h0 = model.dec.fc(z).unsqueeze(0)
+    c0 = torch.zeros_like(h0).to(DEVICE)
+    hidden = (h0, c0)
 
-    # start token
-    cur = torch.tensor([[tokenizer.cls_token_id]], device=DEVICE)
-
+    cur_token = torch.tensor([[tokenizer.cls_token_id]], device=DEVICE)
     output_ids = []
 
     for _ in range(max_len):
-        logits = model.dec(z, cur)
-        next_id = logits[:, -1].argmax(-1).unsqueeze(0)
-        output_ids.append(next_id.item())
-
-        cur = torch.cat([cur, next_id], dim=1)
-        if next_id.item() == tokenizer.sep_token_id:
+        emb = model.dec.emb(cur_token)
+        out, hidden = model.dec.lstm(emb, hidden)
+        logits = model.dec.out(out)
+        
+        # Top-k sampling
+        topk_logits, topk_indices = torch.topk(logits.squeeze(1), k=10)
+        probs = torch.softmax(topk_logits, dim=-1)
+        next_idx = torch.multinomial(probs, 1)
+        next_id = topk_indices.gather(-1, next_idx)
+        
+        token_id = next_id.item()
+        
+        if token_id in [tokenizer.sep_token_id, tokenizer.pad_token_id, 0]:
             break
+            
+        output_ids.append(token_id)
+        cur_token = next_id.view(1, 1)  # ← FIXED: use .view(1, 1) instead of .unsqueeze(0)
 
-    return tokenizer.decode(output_ids)
+    return tokenizer.decode(output_ids, skip_special_tokens=True)
+
+@torch.no_grad()
+def evaluate_model(model, csv_path, num_samples=None):
+    """Evaluate model on test set and compute BLEU scores"""
+    model.eval()
+    
+    df = pd.read_csv(csv_path)
+    questions = df["Question_Text"].tolist()
+    references = df["Answer_Text"].tolist()
+    
+    if num_samples:
+        questions = questions[:num_samples]
+        references = references[:num_samples]
+    
+    bleu_scores = []
+    smooth = SmoothingFunction()
+    
+    print(f"\nEvaluating on {len(questions)} samples...")
+    
+    for i, (question, reference) in enumerate(zip(questions, references)):
+        # Generate answer
+        generated = generate_answer(model, question)
+        
+        # Tokenize for BLEU (word-level)
+        ref_tokens = reference.lower().split()
+        gen_tokens = generated.lower().split()
+        
+        # Calculate BLEU-4 score
+        score = sentence_bleu(
+            [ref_tokens], 
+            gen_tokens,
+            weights=(0.25, 0.25, 0.25, 0.25),
+            smoothing_function=smooth.method1
+        )
+        bleu_scores.append(score)
+        
+        # Print some examples
+        if i < 5:
+            print(f"\n--- Example {i+1} ---")
+            print(f"Q: {question}")
+            print(f"Reference: {reference}")
+            print(f"Generated: {generated}")
+            print(f"BLEU-4: {score:.4f}")
+    
+    avg_bleu = sum(bleu_scores) / len(bleu_scores)
+    print(f"\n{'='*50}")
+    print(f"Average BLEU-4 Score: {avg_bleu:.4f}")
+    print(f"{'='*50}")
+    
+    return avg_bleu, bleu_scores
 
 
 if __name__ == "__main__":
     logger = logsetup("VAE_QA")
 
-    BASE_DIR = "/home/bocunopiko/Antennas/EE782Project"
-    csv_path = f"{BASE_DIR}/datasets/Generative.csv"
-
+    csv_path = Path("datasets/Generative.csv")
     model = train(csv_path)
     question = "What is the reason of using stubs how is it helpful?"
     answer = generate_answer(model, question)
     logger.info(f"Q: {question}\nA: {answer}")
+
+    
+    # Save model
+    torch.save(model.state_dict(), "cvae_model.pt")
+    logger.info("Model saved!")
+    
+    # Evaluate on test set (or same set for now)
+    avg_bleu, scores = evaluate_model(model, csv_path, num_samples=50)
+    logger.info(f"Final BLEU-4 Score: {avg_bleu:.4f}")

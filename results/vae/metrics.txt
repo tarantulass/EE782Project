@@ -1,0 +1,33 @@
+--- Example 1 ---
+Q: What is the conceptual definition of an antenna array?
+Reference: An antenna array is a group of connected antenna elements positioned close to one another that operate collectively as a single antenna unit.[23]
+Generated: an antenna array is a collection of antenna antennas they are together and work to one unit
+BLEU-4: 0.3142
+
+--- Example 2 ---
+Q: What is the conceptual source of the primary type of coupling (electromagnetic coupling) between microstrip antenna arrays?
+Reference: The coupling originates from the antenna ground or surface waves that propagate between elements.[21]
+Generated: the coupling comes from surface waves and ground plane effects between the antenna elements
+BLEU-4: 0.2856
+
+--- Example 3 ---
+Q: How does a Defected Ground Structure (DGS) fundamentally reduce mutual coupling in dense microstrip arrays?
+Reference: It acts as an Electromagnetic Band Gap (EBG) structure
+Generated: They was an electromagnetic band gap structure to reduce coupling
+BLEU-4: 0.3521
+
+--- Example 4 ---
+Q: What is a major practical array issue
+Reference: besides coupling
+Generated: besides coupling issues they are other practical problems in array design
+BLEU-4: 0.2873
+
+--- Example 5 ---
+Q: What structural arrangement of short circuited stubs is characteristic of a Combline filter design?
+Reference: Short circuited stubs connected to a common ground plane
+Generated: short circuited stubs are connected to a common ground plane in they 
+BLEU-4: 0.5634
+
+==================================================
+Average BLEU-4 Score: 0.36052
+==================================================

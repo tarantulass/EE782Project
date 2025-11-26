@@ -1,0 +1,40 @@
+ANN Regressor (Inverse Surrogate Model) Metrics
+=========================================
+Model Structure: (200, 200), Max Iter: 1000
+
+Individual Output Metrics (Prediction Error for Geometry):
+  Sub_W:
+    RMSE: 0.1936
+    R² Score: 0.0351
+  Sub_L:
+    RMSE: 0.2556
+    R² Score: 0.0350
+  Sub_H:
+    RMSE: 0.0111
+    R² Score: 0.0155
+  Patch_W:
+    RMSE: 0.1972
+    R² Score: -0.0092
+  Patch_L:
+    RMSE: 0.4055
+    R² Score: -0.1585
+  Feed_W:
+    RMSE: 0.0408
+    R² Score: 0.0093
+  Slot1_W:
+    RMSE: 0.0098
+    R² Score: -0.0513
+  Slot1_L:
+    RMSE: 0.0115
+    R² Score: -0.0148
+  Slot2_W:
+    RMSE: 0.0095
+    R² Score: -0.0291
+  Slot2_L:
+    RMSE: 0.0101
+    R² Score: -0.0486
+  Freq_GHz:
+    RMSE: 2.3405
+    R² Score: 0.9796
+
+Average RMSE: 0.3168

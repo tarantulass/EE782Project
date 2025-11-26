@@ -4,6 +4,12 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 import pandas as pd
 from transformers import AutoTokenizer
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# local imports
+from pathlib import Path
+from utils.logmodule import logsetup
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -27,9 +33,7 @@ def encode_text(text):
     )
     return t["input_ids"].squeeze(0), t["attention_mask"].squeeze(0)
 
-# ---------------------------
-# Dataset
-# ---------------------------
+
 class QADataset(Dataset):
     def __init__(self, csv_path):
         df = pd.read_csv(csv_path)
@@ -158,7 +162,12 @@ def generate_answer(model, question_text, max_len=80):
 
 
 if __name__ == "__main__":
-    model = train("datasets/Generative.csv")
+    logger = logsetup("VAE_QA")
+
+    BASE_DIR = "/home/bocunopiko/Antennas/EE782Project"
+    csv_path = f"{BASE_DIR}/datasets/Generative.csv"
+
+    model = train(csv_path)
     question = "What is the reason of using stubs how is it helpful?"
     answer = generate_answer(model, question)
-    print(f"Q: {question}\nA: {answer}")
+    logger.info(f"Q: {question}\nA: {answer}")

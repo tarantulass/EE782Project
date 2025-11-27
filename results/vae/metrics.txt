@@ -1,33 +1,79 @@
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Starting training...
+Epoch 10 | Loss 5.3734 | Recon 5.3725 | KL 0.0056 | Beta 0.154
+Epoch 20 | Loss 4.1185 | Recon 4.1120 | KL 0.0303 | Beta 0.214
+Epoch 30 | Loss 3.3220 | Recon 3.3122 | KL 0.0358 | Beta 0.274
+Epoch 40 | Loss 2.6503 | Recon 2.6412 | KL 0.0272 | Beta 0.334
+Epoch 50 | Loss 2.0855 | Recon 2.0781 | KL 0.0190 | Beta 0.394
+Epoch 60 | Loss 1.6172 | Recon 1.6113 | KL 0.0130 | Beta 0.454
+Epoch 70 | Loss 1.2537 | Recon 1.2500 | KL 0.0072 | Beta 0.514
+Epoch 80 | Loss 0.9765 | Recon 0.9743 | KL 0.0039 | Beta 0.574
+Epoch 90 | Loss 0.7704 | Recon 0.7692 | KL 0.0019 | Beta 0.634
+Epoch 100 | Loss 0.6384 | Recon 0.6377 | KL 0.0010 | Beta 0.694
+Epoch 110 | Loss 0.5477 | Recon 0.5472 | KL 0.0006 | Beta 0.754
+Epoch 120 | Loss 0.4850 | Recon 0.4847 | KL 0.0004 | Beta 0.814
+Epoch 130 | Loss 0.4589 | Recon 0.4586 | KL 0.0003 | Beta 0.874
+Epoch 140 | Loss 0.4418 | Recon 0.4415 | KL 0.0003 | Beta 0.934
+2025-11-27 09:02:53,506 - __main__ - INFO - Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+2025-11-27 09:02:53,506 - __main__ - INFO - Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+2025-11-27 09:02:53,506 - __main__ - INFO - Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+2025-11-27 09:02:53,506 - __main__ - INFO - Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+2025-11-27 09:02:53,506 - __main__ - INFO - Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+2025-11-27 09:02:53,506 - __main__ - INFO - Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+2025-11-27 09:02:53,506 - __main__ - INFO - Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+2025-11-27 09:02:53,506 - __main__ - INFO - Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+INFO:__main__:Q: What is the reason of using stubs how is it helpful?
+A: the enig finish is used for by the microstrip lines of the mixer topology often a specific but a slightly increases the fringing fields effectively extend which the resulting of phase with an element pattern with allowing the designer to effectively reducing the physical size of
+Epoch 150 | Loss 0.4368 | Recon 0.4365 | KL 0.0003 | Beta 0.994
+
+Generating sample answer...
+2025-11-27 09:02:54,061 - __main__ - INFO - Model saved!
+2025-11-27 09:02:54,061 - __main__ - INFO - Model saved!
+2025-11-27 09:02:54,061 - __main__ - INFO - Model saved!
+2025-11-27 09:02:54,061 - __main__ - INFO - Model saved!
+2025-11-27 09:02:54,061 - __main__ - INFO - Model saved!
+2025-11-27 09:02:54,061 - __main__ - INFO - Model saved!
+2025-11-27 09:02:54,061 - __main__ - INFO - Model saved!
+2025-11-27 09:02:54,061 - __main__ - INFO - Model saved!
+INFO:__main__:Model saved!
+
+Evaluating on 801 samples...
+
 --- Example 1 ---
-Q: What is the conceptual definition of an antenna array?
-Reference: An antenna array is a group of connected antenna elements positioned close to one another that operate collectively as a single antenna unit.[23]
-Generated: an antenna array is a collection of antenna antennas they are together and work to one unit
-BLEU-4: 0.3142
+Q: What is the conceptual definition of an antenna array
+Reference: An antenna array is a group of connected antenna elements positioned close to one another that operate collectively as a single antenna unit in order to achieve higher directive gain and control the shape of the radiation pattern which is essential for focused communication links.
+Generated: an antenna array is a small effect where the array element can be placed in a continuous angle of one gain and a key point for its primary advantage is the entire frequency band of the side - lobe levels.
+BLEU-4: 0.1123
 
 --- Example 2 ---
-Q: What is the conceptual source of the primary type of coupling (electromagnetic coupling) between microstrip antenna arrays?
-Reference: The coupling originates from the antenna ground or surface waves that propagate between elements.[21]
-Generated: the coupling comes from surface waves and ground plane effects between the antenna elements
-BLEU-4: 0.2856
+Q: What is the conceptual source of the primary type of coupling electromagnetic coupling between microstrip antenna arrays
+Reference: The coupling originates primarily from the antenna surface waves or the ground plane currents that propagate between adjacent elements which significantly interferes with the designed excitation amplitude and phase of the individual antenna elements.
+Generated: the array factor is a mathematical term that can have cause insertion loss and its function is to form a thin surface of their variations in the array ' s phase accumulate that limits the array ' s gain.
+BLEU-4: 0.0080
 
 --- Example 3 ---
-Q: How does a Defected Ground Structure (DGS) fundamentally reduce mutual coupling in dense microstrip arrays?
-Reference: It acts as an Electromagnetic Band Gap (EBG) structure
-Generated: They was an electromagnetic band gap structure to reduce coupling
-BLEU-4: 0.3521
+Q: How does a Defected Ground Structure DGS fundamentally reduce mutual coupling in dense microstrip arrays
+Reference: It acts as an Electromagnetic Band Gap EBG structure by etching resonant shapes into the ground plane that suppress the propagation of surface waves effectively isolating the electromagnetic fields of neighboring patch elements.
+Generated: it acts as an electromagnetic band gap s effect where a microstrip line a constant of one mode radiates the propagating shunt capacitance per unit length of a high - impedance line.
+BLEU-4: 0.1872
 
 --- Example 4 ---
-Q: What is a major practical array issue
-Reference: besides coupling
-Generated: besides coupling issues they are other practical problems in array design
-BLEU-4: 0.2873
+Q: Explain how the substrate thickness influences the performance characteristics of a microstrip patch antenna element in an array
+Reference: Increased substrate thickness generally leads to a wider impedance bandwidth and higher radiation efficiency because it reduces dielectric losses and increases the fringing field component but it also significantly increases the undesirable excitation of surface waves.
+Generated: increased substrate thickness generally leads to a wider impedance bandwidth and higher radiation efficiency because it reduces dielectric losses and increases the fringing field component but it also significantly increases the undesirable propagate while also enhance the radiate /
+BLEU-4: 0.8131
 
 --- Example 5 ---
-Q: What structural arrangement of short circuited stubs is characteristic of a Combline filter design?
-Reference: Short circuited stubs connected to a common ground plane
-Generated: short circuited stubs are connected to a common ground plane in they 
-BLEU-4: 0.5634
-
-==================================================
-Average BLEU-4 Score: 0.36052
-==================================================
+Q: Describe the physical phenomenon known as scan blindness in a phased array antenna system
+Reference: Scan blindness is a detrimental effect where the array's realized gain drops sharply when the beam is steered to a particular angle which occurs when a standing wave is formed on the array surface due to constructive interference of mutual coupling effects.
+Generated: scan blindness is a detrimental effect where the array ' s realized gain drops dramatically when the main beam is steered to a particular angle which causes the array ' s ability to determine the target angle point while also such as the array face preventing calibration procedure
+BLEU-4: 0.3312

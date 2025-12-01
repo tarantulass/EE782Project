@@ -48,19 +48,7 @@ class GaussianRBM():
 def load_and_preprocess_data(csv_path: str, 
                               feature_cols: List[str],
                               train_split: float = 0.8) -> Tuple[torch.Tensor, torch.Tensor, StandardScaler]:
-    """
-    Load patch antenna data and preprocess it.
-    
-    Args:
-        csv_path: Path to the CSV file
-        feature_cols: List of feature column names
-        train_split: Fraction of data to use for training
-        
-    Returns:
-        training_set: Normalized training data tensor
-        testing_set: Normalized testing data tensor
-        scaler: Fitted StandardScaler object
-    """
+  
     df = pd.read_csv(csv_path)
     data = df[feature_cols].values
     
@@ -89,21 +77,7 @@ def train_rbm(rbm: GaussianRBM,
               gibbs_steps: int = 10,
               log_interval: int = 10,
               logger: Optional[object] = None) -> GaussianRBM:
-    """
-    Train the Gaussian RBM model.
     
-    Args:
-        rbm: GaussianRBM instance
-        training_set: Training data tensor
-        epochs: Number of training epochs
-        batch_size: Batch size for training
-        gibbs_steps: Number of Gibbs sampling steps
-        log_interval: Epoch interval for logging
-        logger: Logger instance (optional)
-        
-    Returns:
-        Trained RBM model
-    """
     log_func = logger.info if logger else print
     log_func("\n=== Training RBM ===")
     
@@ -140,22 +114,7 @@ def test_rbm(rbm: GaussianRBM,
              unknown_indices: List[int],
              reconstruction_steps: int = 20,
              logger: Optional[object] = None) -> Dict:
-    """
-    Test the RBM with missing parameters and calculate error metrics.
-    
-    Args:
-        rbm: Trained GaussianRBM instance
-        testing_set: Testing data tensor
-        scaler: Fitted StandardScaler
-        feature_cols: List of all feature column names
-        known_indices: Indices of known parameters
-        unknown_indices: Indices of parameters to predict
-        reconstruction_steps: Number of reconstruction iterations
-        logger: Logger instance (optional)
-        
-    Returns:
-        Dictionary containing predictions, actuals, and metrics
-    """
+  
     log_func = logger.info if logger else print
     log_func("\n=== Testing RBM with Missing Parameters ===")
     
@@ -252,22 +211,7 @@ def run_antenna_inverse_design(csv_path: str,
                                 batch_size: int = 32,
                                 train_split: float = 0.8,
                                 logger: Optional[object] = None) -> Tuple[GaussianRBM, Dict]:
-    """
-    Main function to run the complete antenna inverse design pipeline.
-    
-    Args:
-        csv_path: Path to the patch antenna CSV data
-        hidden_nodes: Number of hidden nodes in RBM
-        epochs: Number of training epochs
-        batch_size: Batch size for training
-        train_split: Fraction of data for training
-        logger: Logger instance (optional)
-        
-    Returns:
-        rbm: Trained RBM model
-        results: Dictionary containing test results and metrics
-    """
-
+ 
     # # Feature columns for insetfed
     # feature_cols = ['Freq_Hz', 'PatchLength', 'PatchWidth', 'PatchHeight', 
     #                 'Striplinewidth', 'FeedOffset', 'Notchlength', 'Notchwidth',

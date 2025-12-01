@@ -1,7 +1,4 @@
 ### Dataset generation for Antenna Design Optimization using Ansys
-1. Download Ansys Electronics Desktop (AEDT) student version (above 2022) and set up the environment for scripting by opening HFSS in home page ribbon.
-2. Setup the pyaedt console by HFSS->simulation->pyaedt console.
-3. Use the provided scripts in the `automation` folder to generate datasets for different antenna
 ---------------------------------------------------------------------------------------------------------------------------------------------
 1. For faster prototyping use MATLAB to generate datasets (based on MoM not FEM).
 
